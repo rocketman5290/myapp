@@ -13,10 +13,11 @@ module Api::V1
 
         def create
             @jobs = Job.new(job_params)
+      
             if @jobs.save
-                render json: @jobs, status: :created
+              render json: @jobs, status: :created
             else
-                render json: @jobs.errors, status: :unprocessable_entity
+              render json: @jobs.errors, status: :unprocessable_entity
             end
         end
 
