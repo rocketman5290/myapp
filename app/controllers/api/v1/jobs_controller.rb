@@ -31,7 +31,12 @@ module Api::V1
         end
 
         def destroy
-
+            job = Job.find_by(id: params[:id] )
+            if job.destroy
+                render json: job, status: 200
+            else
+                render json: {error: job.errors.messages}, status: :unprocessable_entity
+            end
         end
 
 
